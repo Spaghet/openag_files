@@ -30,6 +30,9 @@ firmware_module:
   - false
   environment: environment_1
   type: binary_actuator
+  inputs:
+    cmd:
+      variable: water_level_high
 - _id: atlas_ec_1
   environment: environment_1
   type: atlas_ec
