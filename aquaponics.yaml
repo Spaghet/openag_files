@@ -6,45 +6,27 @@ categories:
 - persistence
 - control
 firmware_module:
-- _id: led_red_1
-  arguments:
-  - 42
-  - true
-  environment: environment_1
-  type: pwm_actuator
-  inputs:
-    cmd:
-      variable: light_illuminance
-- _id: led_blue_1
-  arguments:
-  - 40
-  - true
-  environment: environment_1
-  type: pwm_actuator
-  inputs:
-    cmd:
-      variable: light_illuminance
 - _id: led_white_1
   arguments:
-  - 41
-  - true
+  - 12
+  - false
   environment: environment_1
   type: pwm_actuator
   inputs:
     cmd:
       variable: light_illuminance
-- _id: heater_core_1_1
+- _id: water_heater
   arguments:
-  - 43
+  - 6
   - true
   environment: environment_1
   type: binary_actuator
   inputs:
     cmd:
-      variable: air_temperature
+      variable: water_temperature
 - _id: water_circulation_pump_1
   arguments:
-  - 38
+  - 13
   - false
   environment: environment_1
   type: binary_actuator
