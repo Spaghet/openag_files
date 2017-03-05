@@ -1,0 +1,16 @@
+{
+   "_id": "spaghet_recipe",
+   "format": "simple",
+   "operations": [
+       [
+           0,
+           "circulation",
+           1.0
+       ],
+       [
+           50,
+           "circulation",
+           0.0
+       ]
+   ]
+}

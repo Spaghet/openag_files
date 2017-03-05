@@ -1,0 +1,103 @@
+{
+"firmware_module": [
+  {
+    "_id": "pump_5_water_1",
+    "arguments": [13, false],
+    "environment": "environment_1",
+    "type": "binary_actuator",
+    "inputs":{
+    	"cmd": {
+	  "variable": "water_level_high"
+	}
+    }
+  },
+  {
+    "_id": "led_white_1",
+    "arguments": [12, false],
+    "environment": "environment_1",
+    "type": "binary_actuator",
+    "inputs":{
+    	"cmd": {
+	  "variable": "light_illuminance"
+	}
+    }
+  },
+  { 
+	"_id": "heater",
+	"environment": "environment_1",
+	"arguments": [6, false],
+	"type": "binary_actuator",
+	"inputs": {
+		"cmd": {
+			"variable": "water_temperature"
+		}
+	}
+  },
+  {
+    "_id": "atlas_ec_1",
+    "environment": "environment_1",
+    "type": "atlas_ec"
+  },
+  {
+    "_id": "atlas_ph_1",
+    "environment": "environment_1",
+    "type": "atlas_ph"
+  },
+  {
+    "_id": "mhz16_1",
+    "environment": "environment_1",
+    "type": "mhz16"
+  },
+  {
+    "_id": "am2315_1",
+    "type": "am2315",
+    "environment": "environment_1"
+  },
+  {
+    "_id": "ds18b20_1",
+    "type": "ds18b20",
+    "arguments": [5],
+    "environment": "environment_1",
+    "outputs": {
+      "temperature": {
+        "variable": "water_temperature"
+      }
+    }
+  }
+],
+"software_module": [
+	{
+	"_id": "circulation_controller",
+	"type": "openag_brain:ebb_flow_controller.py",
+	"environment": "environment_1",
+	"parameters": {
+		"variable": "water_level_high",
+		"on_time": "180",
+		"off_time": "6000"
+		}
+	},
+	{
+	"_id": "lights_controller",
+	"type": "openag_brain:direct_controller.py",
+	"environment": "environment_1",
+	"parameters": {
+		"variable": "illuminance"
+		}
+	},
+	{
+	"_id": "water_temperature_controller",
+	"type": "openag_brain:pid.py",
+	"environment": "environment_1",
+	"parameters":{
+		"variable": "water_temperature",
+		"Kp": 1,
+		"Ki": 0,
+		"Kd": 0,
+		"upper_limit": 1,
+		"lower_limit": -1,
+		"windup_limit": 1000,
+		"deadband_width": 0.5
+	}
+	}
+]
+}
